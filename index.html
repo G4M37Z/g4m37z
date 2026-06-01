@@ -6,78 +6,138 @@
     <title>G4M37Z - Kenyan Gaming Content Creator</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-gamepad"></i>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">
                 <span>G4M37Z</span>
             </div>
-            <ul class="nav-menu">
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <div class="logo-container">
+                    <div id="logoCanvas" class="logo-3d"></div>
+                    <span class="logo-text">G4M37Z</span>
+                </div>
+            </div>
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#content" class="nav-link">Content</a></li>
                 <li><a href="#socials" class="nav-link">Socials</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title">Welcome to G4M37Z</h1>
-                <p class="hero-subtitle">Kenyan Gaming & Content Creator</p>
-                <p class="hero-description">eFootball Expert | Gaming Streamer | Tech Enthusiast | Esports Enthusiast</p>
+                <div class="hero-badge">Welcome to the Arena</div>
+                <h1 class="hero-title">G4M37Z</h1>
+                <p class="hero-subtitle">Kenyan Gaming Esports Enthusiast</p>
+                <p class="hero-description">
+                    eFootball Expert | Gaming Streamer | Tech Enthusiast | Content Creator
+                </p>
                 <div class="cta-buttons">
-                    <a href="#socials" class="btn btn-primary">Follow Me</a>
-                    <a href="#content" class="btn btn-secondary">Watch Content</a>
+                    <a href="#socials" class="btn btn-primary">
+                        <span>Follow Me</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#content" class="btn btn-secondary">
+                        <span>Watch Content</span>
+                        <i class="fas fa-play"></i>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">3D</span>
+                        <span class="stat-label">Interactive</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4K</span>
+                        <span class="stat-label">Content</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Passion</span>
+                    </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="floating-card">
-                    <i class="fas fa-trophy"></i>
-                </div>
+            <div class="hero-visual">
+                <div class="hero-3d-container" id="heroContainer"></div>
             </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll to explore</span>
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <div class="title-underline"></div>
+            </div>
             <div class="about-content">
                 <div class="about-text">
+                    <p class="about-intro">
+                        I'm <strong>G4M37Z</strong>, a passionate Kenyan content creator specializing in gaming, esports, and tech entertainment. 
+                    </p>
                     <p>
-                        Hi! I'm G4M37Z, a passionate Kenyan content creator specializing in gaming, esports, and tech entertainment. 
                         With a focus on eFootball strategies and gaming humor, I create engaging content that resonates with the 
-                        Kenyan and international gaming community.
+                        Kenyan and international gaming community. My mission is to deliver high-quality, entertaining, and educational gaming content across all platforms.
                     </p>
                     <p>
-                        Whether you're looking for in-depth gaming tutorials, hilarious gaming moments, or the latest esports news, 
-                        I've got you covered. My mission is to build an entertaining and informative platform for gamers worldwide.
+                        Whether you're looking for in-depth gaming tutorials, hilarious gaming moments, competitive strategies, or the latest esports news, 
+                        I've got you covered.
                     </p>
-                    <div class="stats">
-                        <div class="stat">
-                            <h3>Gaming</h3>
-                            <p>Expert in eFootball & Shadow Fight</p>
+                </div>
+                <div class="about-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
                         </div>
-                        <div class="stat">
-                            <h3>Content</h3>
-                            <p>Multi-platform Creator</p>
+                        <h3>Pro Gamer</h3>
+                        <p>Expert in eFootball & Shadow Fight</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-film"></i>
                         </div>
-                        <div class="stat">
-                            <h3>Community</h3>
-                            <p>Engaged Global Audience</p>
+                        <h3>Content Creator</h3>
+                        <p>Multi-platform Video Production</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
                         </div>
+                        <h3>Community Leader</h3>
+                        <p>Engaged Global Audience</p>
                     </div>
                 </div>
             </div>
@@ -87,71 +147,81 @@
     <!-- Content Section -->
     <section id="content" class="content">
         <div class="container">
-            <h2 class="section-title">My Content</h2>
+            <div class="section-header">
+                <h2 class="section-title">My Content</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Multi-platform gaming excellence</p>
+            </div>
             <div class="content-grid">
                 <div class="content-card">
+                    <div class="card-glow"></div>
                     <div class="content-icon">
                         <i class="fab fa-youtube"></i>
                     </div>
                     <h3>YouTube Gaming</h3>
                     <p>In-depth eFootball strategies, gameplay tutorials, and gaming vlogs</p>
                     <a href="https://www.youtube.com/@G4M37Z" target="_blank" class="content-link">
-                        Watch on YouTube <i class="fas fa-arrow-right"></i>
+                        Watch <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
                 <div class="content-card">
+                    <div class="card-glow"></div>
                     <div class="content-icon">
                         <i class="fab fa-tiktok"></i>
                     </div>
                     <h3>TikTok Shorts</h3>
                     <p>Gaming humor, quick tips, live reactions, and esports updates</p>
                     <a href="https://www.tiktok.com/@g4m37z_ke" target="_blank" class="content-link">
-                        Follow on TikTok <i class="fas fa-arrow-right"></i>
+                        Follow <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
                 <div class="content-card">
+                    <div class="card-glow"></div>
                     <div class="content-icon">
                         <i class="fab fa-twitch"></i>
                     </div>
                     <h3>Live Streaming</h3>
                     <p>Real-time gaming, interactive streams, and community events</p>
                     <a href="https://linktr.ee/Lin_yulu" target="_blank" class="content-link">
-                        Join Stream <i class="fas fa-arrow-right"></i>
+                        Watch <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
                 <div class="content-card">
+                    <div class="card-glow"></div>
                     <div class="content-icon">
                         <i class="fas fa-blog"></i>
                     </div>
                     <h3>Gaming News</h3>
                     <p>Latest esports news, game reviews, and industry insights</p>
                     <a href="https://www.tiktok.com/@g4m37z_ke" target="_blank" class="content-link">
-                        Read Updates <i class="fas fa-arrow-right"></i>
+                        Read <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
                 <div class="content-card">
+                    <div class="card-glow"></div>
                     <div class="content-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3>Community</h3>
+                    <h3>Community Hub</h3>
                     <p>Engage with fellow gamers and esports enthusiasts worldwide</p>
                     <a href="https://www.tiktok.com/@g4m37z_ke" target="_blank" class="content-link">
-                        Join Community <i class="fas fa-arrow-right"></i>
+                        Join <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
                 <div class="content-card">
+                    <div class="card-glow"></div>
                     <div class="content-icon">
                         <i class="fas fa-star"></i>
                     </div>
-                    <h3>Exclusive</h3>
-                    <p>Behind-the-scenes content and subscriber perks</p>
+                    <h3>Exclusive Access</h3>
+                    <p>Behind-the-scenes content and premium subscriber perks</p>
                     <a href="https://linktr.ee/Lin_yulu" target="_blank" class="content-link">
-                        Get Access <i class="fas fa-arrow-right"></i>
+                        Join <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -161,73 +231,88 @@
     <!-- Social Media Section -->
     <section id="socials" class="socials">
         <div class="container">
-            <h2 class="section-title">Connect With Me</h2>
-            <p class="section-subtitle">Follow me across all platforms for gaming content, updates, and live streams</p>
+            <div class="section-header">
+                <h2 class="section-title">Connect With Me</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Follow across all platforms for gaming content & live streams</p>
+            </div>
             
             <div class="social-grid">
-                <!-- YouTube -->
                 <div class="social-card youtube">
-                    <div class="social-icon">
-                        <i class="fab fa-youtube"></i>
+                    <div class="social-glow"></div>
+                    <div class="social-header">
+                        <div class="social-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <h3>YouTube</h3>
                     </div>
-                    <h3>YouTube</h3>
-                    <p>@G4M37Z</p>
-                    <p class="subscriber-count">Gaming Videos & Tutorials</p>
+                    <p class="social-username">@G4M37Z</p>
+                    <p class="social-desc">Gaming Videos & Tutorials</p>
                     <a href="https://www.youtube.com/@G4M37Z" target="_blank" class="social-btn">Subscribe</a>
                 </div>
 
-                <!-- TikTok -->
                 <div class="social-card tiktok">
-                    <div class="social-icon">
-                        <i class="fab fa-tiktok"></i>
+                    <div class="social-glow"></div>
+                    <div class="social-header">
+                        <div class="social-icon">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <h3>TikTok</h3>
                     </div>
-                    <h3>TikTok</h3>
-                    <p>@g4m37z_ke</p>
-                    <p class="subscriber-count">Short-Form Gaming Content</p>
+                    <p class="social-username">@g4m37z_ke</p>
+                    <p class="social-desc">Short-Form Gaming Content</p>
                     <a href="https://www.tiktok.com/@g4m37z_ke" target="_blank" class="social-btn">Follow</a>
                 </div>
 
-                <!-- Instagram -->
                 <div class="social-card instagram">
-                    <div class="social-icon">
-                        <i class="fab fa-instagram"></i>
+                    <div class="social-glow"></div>
+                    <div class="social-header">
+                        <div class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h3>Instagram</h3>
                     </div>
-                    <h3>Instagram</h3>
-                    <p>@g4m37z_ke</p>
-                    <p class="subscriber-count">Photos & Stories</p>
+                    <p class="social-username">@g4m37z_ke</p>
+                    <p class="social-desc">Photos & Stories</p>
                     <a href="https://linktr.ee/Lin_yulu" target="_blank" class="social-btn">Follow</a>
                 </div>
 
-                <!-- Twitch -->
                 <div class="social-card twitch">
-                    <div class="social-icon">
-                        <i class="fab fa-twitch"></i>
+                    <div class="social-glow"></div>
+                    <div class="social-header">
+                        <div class="social-icon">
+                            <i class="fab fa-twitch"></i>
+                        </div>
+                        <h3>Twitch</h3>
                     </div>
-                    <h3>Twitch</h3>
-                    <p>Live Gaming Streams</p>
-                    <p class="subscriber-count">Real-Time Gameplay</p>
+                    <p class="social-username">Live Gaming</p>
+                    <p class="social-desc">Real-Time Gameplay</p>
                     <a href="https://linktr.ee/Lin_yulu" target="_blank" class="social-btn">Watch</a>
                 </div>
 
-                <!-- Twitter/X -->
                 <div class="social-card twitter">
-                    <div class="social-icon">
-                        <i class="fab fa-x-twitter"></i>
+                    <div class="social-glow"></div>
+                    <div class="social-header">
+                        <div class="social-icon">
+                            <i class="fab fa-x-twitter"></i>
+                        </div>
+                        <h3>X (Twitter)</h3>
                     </div>
-                    <h3>X (Twitter)</h3>
-                    <p>@G4M37Z</p>
-                    <p class="subscriber-count">Gaming News & Updates</p>
+                    <p class="social-username">@G4M37Z</p>
+                    <p class="social-desc">Gaming News & Updates</p>
                     <a href="https://linktr.ee/Lin_yulu" target="_blank" class="social-btn">Follow</a>
                 </div>
 
-                <!-- Linktree -->
                 <div class="social-card linktree">
-                    <div class="social-icon">
-                        <i class="fas fa-link"></i>
+                    <div class="social-glow"></div>
+                    <div class="social-header">
+                        <div class="social-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h3>All Links</h3>
                     </div>
-                    <h3>Linktree</h3>
-                    <p>All Links in One Place</p>
-                    <p class="subscriber-count">Complete Profile</p>
+                    <p class="social-username">Linktree</p>
+                    <p class="social-desc">Complete Profile</p>
                     <a href="https://linktr.ee/Lin_yulu" target="_blank" class="social-btn">Visit</a>
                 </div>
             </div>
@@ -237,30 +322,39 @@
     <!-- Featured Games Section -->
     <section class="featured-games">
         <div class="container">
-            <h2 class="section-title">Featured Games</h2>
+            <div class="section-header">
+                <h2 class="section-title">Featured Games</h2>
+                <div class="title-underline"></div>
+            </div>
             <div class="games-grid">
                 <div class="game-card">
+                    <div class="game-bg"></div>
                     <div class="game-icon">
                         <i class="fas fa-soccer-ball"></i>
                     </div>
                     <h3>eFootball</h3>
-                    <p>Expert strategies and pro tips</p>
+                    <p>Pro strategies and expert tips</p>
+                    <span class="game-tag">Featured</span>
                 </div>
 
                 <div class="game-card">
+                    <div class="game-bg"></div>
                     <div class="game-icon">
                         <i class="fas fa-fist-raised"></i>
                     </div>
                     <h3>Shadow Fight</h3>
                     <p>Combat tactics and gameplay</p>
+                    <span class="game-tag">Main Title</span>
                 </div>
 
                 <div class="game-card">
+                    <div class="game-bg"></div>
                     <div class="game-icon">
                         <i class="fas fa-gamepad"></i>
                     </div>
                     <h3>More Games</h3>
                     <p>Diverse gaming content</p>
+                    <span class="game-tag">Coming Soon</span>
                 </div>
             </div>
         </div>
@@ -269,34 +363,65 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Have a collaboration idea or want to work together? Let's connect!</p>
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Collaboration inquiries & business opportunities</p>
+            </div>
             
             <div class="contact-content">
                 <form class="contact-form" id="contactForm">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" rows="6" required></textarea>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                        <span class="form-line"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                        <span class="form-line"></span>
+                    </div>
+                    <div class="form-group">
+                        <select required>
+                            <option value="">Select Topic</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="sponsorship">Sponsorship</option>
+                            <option value="content">Content Question</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <span class="form-line"></span>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="6" required></textarea>
+                        <span class="form-line"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
                 </form>
 
                 <div class="contact-info">
                     <div class="info-card">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
                         <h3>Location</h3>
                         <p>Nairobi, Kenya</p>
                     </div>
 
                     <div class="info-card">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p>Contact via Linktree</p>
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Contact</h3>
+                        <p>Via Linktree</p>
                     </div>
 
                     <div class="info-card">
-                        <i class="fas fa-clock"></i>
-                        <h3>Availability</h3>
-                        <p>Available for collaborations</p>
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Available For</h3>
+                        <p>Collaborations</p>
                     </div>
                 </div>
             </div>
@@ -344,5 +469,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="3d-logo.js"></script>
 </body>
 </html>
