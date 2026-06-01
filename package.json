@@ -1,0 +1,21 @@
+{
+  "name": "g4m37z-website",
+  "version": "1.0.0",
+  "description": "G4M37Z - Kenyan Gaming Content Creator Website",
+  "scripts": {
+    "dev": "http-server",
+    "build": "echo 'Static site - no build needed'",
+    "start": "http-server"
+  },
+  "keywords": [
+    "gaming",
+    "content-creator",
+    "esports",
+    "kenya"
+  ],
+  "author": "G4M37Z",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
