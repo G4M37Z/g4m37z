@@ -1,0 +1,8 @@
+{
+  "buildCommand": "npm run build || true",
+  "devCommand": "npm run dev || npx http-server",
+  "installCommand": "npm install || yarn install || true",
+  "outputDirectory": "./",
+  "framework": "static",
+  "env": []
+}
